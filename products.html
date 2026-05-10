@@ -1,32 +1,80 @@
+products.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chewiwi | Travel Through Food</title>
-    <!-- Bootstrap 5 -->
+
+    <title>Chewiwi | Products</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="bg-light">
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
+    <nav class="navbar navbar-expand-lg shadow-sm bg-white">
+
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">CHEWIWI</a>
-			<!-- Link to your cart page -->
-            <a href="crt.html" class="btn btn-chewiwi">🛒</a>
-			
+
+            <a class="navbar-brand fw-bold" href="index.html">
+                CHEWIWI
+            </a>
+
+            <div class="ms-auto d-flex gap-2">
+
+                <a href="crt.html" class="btn btn-outline-dark">
+                    Cart
+                </a>
+
+                <a href="index.html" class="btn btn-dark">
+                    Home
+                </a>
+
+            </div>
+
         </div>
+
     </nav>
 
-    <!-- PRODUCTS SECTION -->
-    <div class="container py-5">
-        <h1 class="text-center mb-5 main-title">Travel Through Food</h1>
-        <div class="row" id="product-list"></div>
-    </div>
+    <!-- PAGE HEADER -->
+    <section class="py-5 text-center">
 
-    <script src="crt.js"></script>
-	<script src="auth.js"></script>
+        <div class="container">
+
+            <h1 class="fw-bold mb-3">
+                Explore Our Cultural Experience Kits
+            </h1>
+
+            <p class="text-muted">
+                Discover curated food experiences inspired by different cultures and cities.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="pb-5">
+
+        <div class="container">
+
+            <!-- JS injects products here -->
+            <div id="product-list" class="row"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Products JS -->
+    <script src="products.js"></script>
+
 </body>
 </html>
