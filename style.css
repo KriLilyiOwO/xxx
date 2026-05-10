@@ -209,3 +209,24 @@ body {
     background-color: #c2d634;
     transform: translateY(-2px);
 }
+
+.bottom-info {
+    background: linear-gradient(180deg, #fff, #f3f0ec);
+}
+
+.bottom-card {
+    background: white;
+    border: 1px solid var(--input-border);
+    transition: 0.3s ease;
+}
+
+.bottom-card:hover {
+    transform: translateY(-5px);
+}
+
+.placeholder-box {
+    width: 100%;
+    height: 120px;
+    background: #e9e4dd;
+    border-radius: 12px;
+}
