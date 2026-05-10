@@ -1,4 +1,4 @@
-// --- PRODUCT DATABASE (Syncs with Admin CRUD) ---
+// --- DYNAMIC DATABASE SYNC ---
 const defaultProducts = [
     { id: 1, name: "Tokyo Sakura Date Night Kit", price: 1890, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=800" },
     { id: 2, name: "Busan K-Drama Comfort Box", price: 1650, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800" },
@@ -8,10 +8,10 @@ const defaultProducts = [
     { id: 6, name: "Busan Beach Picnic Kit", price: 1750, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=800" }
 ];
 
-// Pull from localStorage so Admin changes (Delete/Update) show up here
+// Check if localStorage has data, otherwise use defaults
 let products = JSON.parse(localStorage.getItem("storedProducts")) || defaultProducts;
 
-// Save the list if it's the first time running
+// If it's the first time ever loading, save the defaults to localStorage
 if (!localStorage.getItem("storedProducts")) {
     localStorage.setItem("storedProducts", JSON.stringify(products));
 }
@@ -23,17 +23,12 @@ if(productList) {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const isAdmin = currentUser && currentUser.role === "admin";
 
-  // Clear existing content to avoid duplication on refresh
   productList.innerHTML = '';
 
   products.forEach(p => {
-    let buttonHTML = "";
-    if (isAdmin) {
-        // Redirects Admin to the management page
-        buttonHTML = `<a href="admin.html" class="btn btn-outline-dark mt-auto">Edit in Admin</a>`;
-    } else {
-        buttonHTML = `<button class="btn btn-checkout mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>`;
-    }
+    let buttonHTML = isAdmin 
+        ? `<a href="admin.html" class="btn btn-outline-dark mt-auto">Edit in Admin</a>`
+        : `<button class="btn btn-checkout mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>`;
 
     productList.innerHTML += `
       <div class="col-md-4 mb-4">
@@ -51,7 +46,6 @@ if(productList) {
 
 // --- ADD TO CART LOGIC ---
 function addToCart(id) {
-  // Always find from the current products list (important if price was updated)
   const product = products.find(p => p.id === id);
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const existing = cart.find(item => item.id === id);
