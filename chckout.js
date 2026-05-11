@@ -105,7 +105,7 @@ function loadCartSummary() {
     const grandTotal = subtotal + currentShippingFee;
 
     document.getElementById('subtotal-val').textContent = `₱${subtotal.toLocaleString()}`;
-    shippingValDisplay.textContent = `₱${currentShippingFee.toFixed()}`; // Update display here
+    shippingValDisplay.textContent = `₱${currentShippingFee.toFixed(2)}`; // Update display here
     document.getElementById('final-total').textContent = `₱${grandTotal.toLocaleString()}`;
 }
 
